@@ -1,0 +1,21 @@
+# react-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-front-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-front-end
+  template:
+    metadata:
+      labels:
+        app: react-front-end
+    spec:
+      containers:
+        - name: react-front-end
+          image: gcr.io/learn-gcp-391919/gke-feature-branch-front-end:v4
+          ports:
+            - containerPort: 80

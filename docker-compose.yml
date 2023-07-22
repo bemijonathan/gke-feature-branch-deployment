@@ -9,7 +9,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
-      - '5432:5432'
+      - '5433:5432'
 
   backend:
     build:
@@ -21,19 +21,21 @@ services:
     ports:
       - '8080:8080'
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   frontend:
     build:
-      context: ./front-end
+      context: ./frontend
       dockerfile: Dockerfile
     volumes:
-      - ./front-end:/app
+      - ./frontend:/app
       - /app/node_modules
     ports:
       - '3000:3000'
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
 volumes:
   postgres_data:

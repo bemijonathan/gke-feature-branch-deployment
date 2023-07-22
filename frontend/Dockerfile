@@ -1,5 +1,5 @@
 # Use an official Node runtime as a base image
-FROM node:14 as build
+FROM --platform=linux/amd64 node:16 as build
 
 # Set the working directory in the container to /app
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Use Nginx to serve the static files
-FROM nginx:1.19.0-alpine
+FROM nginx:1.21.1
 
 # Copy the build output from the first stage build
 COPY --from=build /app/build /usr/share/nginx/html
