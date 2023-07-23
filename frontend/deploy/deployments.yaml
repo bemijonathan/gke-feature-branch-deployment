@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: react-front-end
-          image: gcr.io/learn-gcp-391919/gke-feature-branch-front-end:v4
+          image: gcr.io/learn-gcp-391919/gke-feature-branch-front-end:v5
           ports:
             - containerPort: 80

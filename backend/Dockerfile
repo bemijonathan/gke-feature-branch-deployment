@@ -13,10 +13,6 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-RUN npm run migrate
-
-RUN npm run generate
-
 # Expose the port the app runs on
 EXPOSE 8080
 

@@ -1,0 +1,13 @@
+# react-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end
+spec:
+  selector:
+    app: back-end
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer
